@@ -1,6 +1,8 @@
 #encoding:utf-8
 
 from tkinter import Tk,Button,Entry,Label,Text,END
+from main import YouDao_translater
+
 
 class Application(object):
 
@@ -25,7 +27,9 @@ class Application(object):
         content = self.entry.get()
         self.result.delete(1.0,END)
         self.result.insert(END,content)
-
+        result = YouDao_translater.crawl(self,content)
+        self.result.delete(1.0,END)
+        self.result.insert(END,result)
 
     def run(self):
         self.window.mainloop()
